@@ -30,31 +30,22 @@ localparam OR  = 4'b0001;
 localparam NOR = 4'b0010;
 localparam ADD = 4'b0011;
 localparam SUB = 4'b0100;
-localparam INC	= 4'b0101;
-localparam MULPlus = 4'b0110;
-localparam MOV = 4'b0111;
    
    always @ (A or B or ALUOperation)
      begin
 		case (ALUOperation)
 		  ADD: // add
-			ALUResult = A + B;//5/10/2015
+			ALUResult=A + B;//5/10/2015
 		  SUB: // sub
-			ALUResult = A - B;
+			ALUResult=A - B;
 		  AND: // and
-			ALUResult = A & B;
+			ALUResult= A & B;
 		  OR: // or
-			ALUResult = A | B;
+			ALUResult= A | B;
 		  NOR: // or
-			ALUResult = ~(A|B);
-		  INC:
-			ALUResult = A + 1;
-		  MULPlus:
-			ALUResult = (A  * B) + 1;
-		  MOV:
-		   ALUResult = A;
+			ALUResult= ~(A|B);
 		default:
-			ALUResult = 0;
+			ALUResult= 0;
 		endcase // case(control)
 		Zero = (ALUResult==0) ? 1'b1 : 1'b0;
      end // always @ (A or B or control)
